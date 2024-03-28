@@ -3,17 +3,20 @@ const rockButton = document.querySelector("#rockButton");
 const paperButton = document.querySelector("#paperButton");
 const scissorsButton = document.querySelector("#scissorsButton");
 
-let choice = ""
+
+let playerWins = 0;
+let computerWins = 0;
+let draws = 0;
+
 
 rockButton.addEventListener("click", () => {
-    playGame("rock")
-
+    playRound("rock", getComputerChoice());
 });
 paperButton.addEventListener("click", () => {
-    playGame("paper")
+    playRound("paper", getComputerChoice());
 });
 scissorsButton.addEventListener("click", () => {
-    playGame("scissors")
+    playRound("scissors", getComputerChoice());
 });
 
 
@@ -33,93 +36,64 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock") {
         if (computerSelection == "scissors"){
             alert ("You Win! Rock beats Scissors");
-            return "win";
+            playerWins++;
         }
         else if (computerSelection == "paper"){
             alert ("You Lose! Paper beats Rock");
-            return "lose";
+            computerWins++;
         }
         else if (computerSelection == "rock"){
             alert ("Draw! Both Players chose Rock");
-            return "draw";
+            draws++;
         }         
     }
     else if (playerSelection == "paper") {
          if (computerSelection == "rock"){
             alert ("You Win! Paper beats Rock");
-            return "win";
+            playerWins++;
         }
         else if (computerSelection == "scissors"){
             alert ("You Lose! Scissors beats Paper");
-            return "lose";
+            computerWins++;
         }
         else if (computerSelection == "paper"){
             alert ("Draw! Both Players chose Paper");
-            return "draw";
+            draws++;
         }  
     }
     else if (playerSelection == "scissors") {
         if (computerSelection == "paper"){
             alert ("You Win! Scissors beats Paper");
-            return "win";
+            playerWins++;
         }
         else if (computerSelection == "rock"){
             alert ("You Lose! Rock beats Scissors");
-            return "lose";
+            computerWins++;
         }
         else if (computerSelection == "scissors"){
             alert ("Draw! Both Players chose Scissors");
-            return "draw";
+            draws++;
         }     
     }
+
+
+    if (playerWins === 5 || computerWins === 5 || draws === 5){
+        if (playerWins > computerWins){
+            alert("You Win!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
+        }
+        else if (playerWins < computerWins){
+            alert("You Lose!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
+        }
+        else if (playerWins == computerWins){
+            alert("Game is a Draw");
+        }
+        playerWins = 0;
+        computerWins = 0;
+        draws = 0;
+    }
+
 }
 
-
-
-
-function playGame(choice){
-    let playerWins = 0;
-    let computerWins = 0;
-    let draws = 0;
-
-    // for (let step = 0; step < 5; step++) {
-    //     const playerSelection = choice;
-    //     const computerSelection = getComputerChoice();
-    //     const result = playRound(playerSelection, computerSelection);
-
-
-    //     if (result == "win") {
-    //         playerWins++;
-    //     } else if (result == "lose") {
-    //         computerWins++;
-    //     } else if (result == "draw") {
-    //         draws++;
-    //   }
-    // }
-
-    const playerSelection = choice;
-    const computerSelection = getComputerChoice();
-    const result = playRound(playerSelection, computerSelection);
-
-    if (result == "win") {
-        playerWins++;
-    } else if (result == "lose") {
-        computerWins++;
-    } else if (result == "draw") {
-        draws++;
-    }
-
-
-    if (playerWins > computerWins){
-        alert("You Win!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
-    }
-    else if (playerWins < computerWins){
-        alert("You Lose!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
-    }
-    else if (playerWins == computerWins){
-        alert("Game is a Draw");
-    }
-}
 
 
 
