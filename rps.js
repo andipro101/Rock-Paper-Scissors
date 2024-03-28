@@ -2,6 +2,10 @@
 const rockButton = document.querySelector("#rockButton");
 const paperButton = document.querySelector("#paperButton");
 const scissorsButton = document.querySelector("#scissorsButton");
+const result = document.querySelector("#result");
+const playerScore = document.querySelector("#playerScore");
+const computerScore = document.querySelector("#computerScore");
+const finalResult = document.querySelector("#finalResult");
 
 
 let playerWins = 0;
@@ -31,61 +35,68 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+
+    finalResult.textContent = ("");
     
     
     if (playerSelection == "rock") {
         if (computerSelection == "scissors"){
-            alert ("You Win! Rock beats Scissors");
+            result.textContent = ("You Win! Rock beats Scissors");
             playerWins++;
+         
         }
         else if (computerSelection == "paper"){
-            alert ("You Lose! Paper beats Rock");
+            result.textContent = ("You Lose! Paper beats Rock");
             computerWins++;
         }
         else if (computerSelection == "rock"){
-            alert ("Draw! Both Players chose Rock");
+            result.textContent = ("Draw! Both Players chose Rock");
             draws++;
         }         
     }
     else if (playerSelection == "paper") {
          if (computerSelection == "rock"){
-            alert ("You Win! Paper beats Rock");
+            result.textContent = ("You Win! Paper beats Rock");
             playerWins++;
         }
         else if (computerSelection == "scissors"){
-            alert ("You Lose! Scissors beats Paper");
+            result.textContent = ("You Lose! Scissors beats Paper");
             computerWins++;
         }
         else if (computerSelection == "paper"){
-            alert ("Draw! Both Players chose Paper");
+            result.textContent = ("Draw! Both Players chose Paper");
             draws++;
         }  
     }
     else if (playerSelection == "scissors") {
         if (computerSelection == "paper"){
-            alert ("You Win! Scissors beats Paper");
+            result.textContent = ("You Win! Scissors beats Paper");
             playerWins++;
         }
         else if (computerSelection == "rock"){
-            alert ("You Lose! Rock beats Scissors");
+            result.textContent = ("You Lose! Rock beats Scissors");
             computerWins++;
         }
         else if (computerSelection == "scissors"){
-            alert ("Draw! Both Players chose Scissors");
+            result.textContent = ("Draw! Both Players chose Scissors");
             draws++;
         }     
     }
 
 
+    playerScore.textContent = playerWins;
+    computerScore.textContent = computerWins;
+
+
     if (playerWins === 5 || computerWins === 5 || draws === 5){
         if (playerWins > computerWins){
-            alert("You Win!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
+            finalResult.textContent = ("You Win!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
         }
         else if (playerWins < computerWins){
-            alert("You Lose!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
+            finalResult.textContent = ("You Lose!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
         }
         else if (playerWins == computerWins){
-            alert("Game is a Draw");
+            finalResult.textContent = ("Game is a Draw");
         }
         playerWins = 0;
         computerWins = 0;
