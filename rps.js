@@ -46,7 +46,7 @@ function playRound(playerSelection, computerSelection) {
          
         }
         else if (computerSelection == "paper"){
-            result.textContent = ("You Lose! Paper beats Rock");
+            result.textContent = ("You Lose! Rock loses to Paper");
             computerWins++;
         }
         else if (computerSelection == "rock"){
@@ -60,7 +60,7 @@ function playRound(playerSelection, computerSelection) {
             playerWins++;
         }
         else if (computerSelection == "scissors"){
-            result.textContent = ("You Lose! Scissors beats Paper");
+            result.textContent = ("You Lose! Paper loses to Scissors");
             computerWins++;
         }
         else if (computerSelection == "paper"){
@@ -74,7 +74,7 @@ function playRound(playerSelection, computerSelection) {
             playerWins++;
         }
         else if (computerSelection == "rock"){
-            result.textContent = ("You Lose! Rock beats Scissors");
+            result.textContent = ("You Lose! Scissors loses to Rock");
             computerWins++;
         }
         else if (computerSelection == "scissors"){
@@ -90,10 +90,10 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerWins === 5 || computerWins === 5 || draws === 5){
         if (playerWins > computerWins){
-            finalResult.textContent = ("You Win!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
+            finalResult.textContent = ("You Win!!! \n" + playerWins + ":Wins" + "|" + computerWins +":Loses" + "|" + draws + ":Draws");
         }
         else if (playerWins < computerWins){
-            finalResult.textContent = ("You Lose!!! \n" + playerWins + ":Wins" + "/" + computerWins +":Loses" + "/" + draws + ":Draws");
+            finalResult.textContent = ("You Lose!!! \n" + playerWins + ":Wins" + "|" + computerWins +":Loses" + "|" + draws + ":Draws");
         }
         else if (playerWins == computerWins){
             finalResult.textContent = ("Game is a Draw");
